@@ -1,0 +1,17 @@
+.navbar {
+    display: flex;
+    padding: 5px;
+    background-color: #39919B;
+}
+
+h4 {
+    color: #ffffff;
+}
+
+.right {
+    display: flex;
+}
+
+.right button {
+    margin-left: 10px;
+}
