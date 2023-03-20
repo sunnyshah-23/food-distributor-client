@@ -8,7 +8,12 @@ export const loginCall = async (userCredential, dispatch, navigate) => {
         console.log(res)
         dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
         // console.log("dispacthed")
-        navigate("/")
+        if (res?.data.isAdmin) {
+            navigate("/admin")
+        }
+        else {
+            navigate("/")
+        }
     } catch (err) {
         console.log(err.response.data.details)
         dispatch({ type: "LOGIN_FAILURE", payload: err.response.data.details });
@@ -23,6 +28,7 @@ export const registerCall = async (userCredential, dispatch, navigate) => {
         navigate("/login")
     } catch (err) {
         dispatch({ type: "REGISTER_FAILURE", payload: err })
+
     }
 }
 
