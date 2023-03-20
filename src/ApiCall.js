@@ -28,7 +28,6 @@ export const registerCall = async (userCredential, dispatch, navigate) => {
         navigate("/login")
     } catch (err) {
         dispatch({ type: "REGISTER_FAILURE", payload: err })
-
     }
 }
 
