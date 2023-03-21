@@ -1,0 +1,28 @@
+.cart .row {
+    justify-content: start !important;
+}
+
+.cart .card {
+    margin-top: 10px;
+}
+
+.cart .card img {
+    width: 100%;
+    height: 100%;
+}
+
+.empty {
+    text-align: center;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.empty_cart {
+    margin-top: 40px;
+    justify-content: center;
+    width: 28%;
+    height: 40%;
+}

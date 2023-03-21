@@ -48,7 +48,7 @@ function Update() {
                 <ToastContainer />
                 <div className='row'>
                     <div className='col-md-6'>
-                        <form onClick={handleUpdate}>
+                        <form >
                             <div class="mb-3">
                                 <label for="exampleFormControlInput" className="form-label">Name</label>
                                 <input required type="text" className="form-control" id="exampleFormControlInput1" ref={name} defaultValue={product?.name} />
@@ -69,7 +69,7 @@ function Update() {
                                 <label for="exampleFormControlInput" className="form-label">Brand</label>
                                 <input required type="text" className="form-control" id="exampleFormControlInput1" ref={brand} defaultValue={product?.brand} />
                             </div>
-                            <button className="btn btn-primary" type="submit">Update</button>
+                            <button className="btn btn-primary" onClick={handleUpdate} type="submit">Update</button>
                         </form>
                     </div>
                 </div>

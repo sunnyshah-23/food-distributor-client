@@ -4,8 +4,10 @@ import "./topbar.css"
 import { useNavigate } from "react-router-dom"
 import { logout } from '../../ApiCall'
 import AddIcon from '@mui/icons-material/Add';
+import { CartContext } from '../../context/CartContext'
 function Topbar() {
     const { isAuthenticated, user, dispatch } = useContext(AuthContext)
+    const { cart } = useContext(CartContext)
     const navigate = useNavigate()
     return (
         <div className="navbar">
@@ -14,6 +16,7 @@ function Topbar() {
             </div>
             <div className="right">
                 {user && <h4>Hi {user.name}</h4>}
+                {user && !user?.isAdmin && <button className='btn btn-primary' onClick={() => navigate("/cart")}>Cart: <h7>{cart?.length}</h7></button>}
                 {user?.isAdmin && < AddIcon style={{ color: "white" }} onClick={() => { navigate("/add/product") }} />}
                 {user && <button className='btn btn-primary' onClick={(e) => logout(dispatch, navigate)}>Logout</button>}
 
