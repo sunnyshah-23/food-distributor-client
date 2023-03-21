@@ -10,6 +10,7 @@ import { AuthContext } from './context/AuthContext';
 import AdminHome from "./pages/admin/Home"
 import Update from './pages/admin/Update';
 import Addproduct from './pages/admin/Addproduct';
+import Cart from './pages/cart/Cart';
 function App() {
   const { user } = useContext(AuthContext)
   return (
@@ -23,6 +24,8 @@ function App() {
           <Route exact path="/admin/" element={user?.isAdmin == true ? <AdminHome /> : <Home />} />
           <Route exact path="/product/:id" element={user?.isAdmin == true ? <Update /> : <Home />} />
           <Route exact path="/add/product" element={user?.isAdmin == true ? <Addproduct /> : <Home />} />
+          <Route exact path="/cart" element={user?.isAdmin == false ? <Cart /> : <AdminHome />} />
+
 
 
         </Routes>
