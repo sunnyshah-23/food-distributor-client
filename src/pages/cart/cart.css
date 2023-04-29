@@ -11,6 +11,10 @@
     height: 100%;
 }
 
+.order {
+    text-align: center;
+}
+
 .empty {
     text-align: center;
     margin: 0;

@@ -8,7 +8,7 @@ function Display() {
     const [products, setProducts] = useState([])
     const { dispatch, cart } = useContext(CartContext)
     const getProducts = async () => {
-        await axios.get(`${BASE_URL}/admin/product`)
+        await axios.get(`${BASE_URL}/api/products`)
             .then((res) => setProducts(res.data))
             .catch((err) => console.log(err))
 

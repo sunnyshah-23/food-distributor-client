@@ -13,7 +13,7 @@ function Addproduct() {
     const navigate = useNavigate()
     const handleAdd = async (e) => {
         e.preventDefault()
-        await axios.post(`${BASE_URL}/admin/product/add`, {
+        await axios.post(`${BASE_URL}/api/product/add`, {
             name: name.current.value,
             qty: qty.current.value,
             category: category.current.value,

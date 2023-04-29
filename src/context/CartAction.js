@@ -8,3 +8,7 @@ export const CartRemove = (id) => ({
     type: "CART_REMOVE",
     payload: id
 });
+
+export const ClearCart = () => ({
+    type: "CLEAR_CART"
+})

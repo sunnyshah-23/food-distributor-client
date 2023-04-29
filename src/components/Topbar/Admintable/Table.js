@@ -7,7 +7,8 @@ function Table() {
     const navigate = useNavigate()
     let count = 0;
     const getProducts = async () => {
-        await axios.get(`${BASE_URL}/admin/product`).then((res) => {
+        await axios.get(`${BASE_URL}/api/products`).then((res) => {
+            console.log(res)
             setProducts(res.data)
         }).catch((e) => console.log(e))
 
@@ -15,7 +16,7 @@ function Table() {
     const deleteProduct = async (e, id) => {
         e.preventDefault()
         console.log(typeof (id))
-        await axios.delete(`${BASE_URL}/admin/product/${id}`).then((res) => { window.location.reload() }).catch((e) => console.log(e))
+        await axios.delete(`${BASE_URL}/api/delete/${id}`).then((res) => { window.location.reload() }).catch((e) => console.log(e))
     }
     useEffect(() => {
         getProducts()

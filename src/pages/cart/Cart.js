@@ -6,15 +6,25 @@ import { useNavigate } from 'react-router-dom'
 function Cart() {
     const { dispatch, cart } = useContext(CartContext)
     const [cartItem, setCartItem] = useState(cart)
+    const [total, setTotal] = useState(0);
     const navigate = useNavigate()
     const removeItem = (e, id) => {
         e.preventDefault()
         dispatch({ type: "CART_REMOVE", payload: id })
     }
+    const calculateTotal = () => {
+        let totalPrice = 0;
+        cart.map((pro) => {
+            totalPrice = totalPrice + pro.quantity * pro.price;
+        })
+        console.log("total", total)
+        setTotal(totalPrice)
+    }
     useEffect(() => {
         setCartItem(cart)
-        console.log(cartItem.length)
+        calculateTotal()
     }, [cart])
+
     return (
         <>
             <Topbar />
@@ -51,6 +61,18 @@ function Cart() {
                         ))}
 
                     </div>
+                    {cartItem.length != 0 && cartItem.length != null ? (
+                        <div class="col-md-4">
+                            <div className="order card">
+                                <div className='card-body'>
+
+                                    <button className='btn btn-primary' onClick={() => navigate("/payment")}>Place Order:${total}</button>
+
+                                </div>
+                            </div>
+                        </div>
+                    ) : (<div></div>)}
+
                 </div>
 
             </div>

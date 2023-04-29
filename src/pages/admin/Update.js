@@ -16,7 +16,7 @@ function Update() {
     const price = useRef()
 
     const getProduct = async () => {
-        await axios.get(`${BASE_URL}/admin/product/${id}`).then((res) => {
+        await axios.get(`${BASE_URL}/api/getproduct/${id}`).then((res) => {
             setProduct(res.data)
             name.current.value = product.name
             qty.current.value = product.qty
@@ -28,7 +28,7 @@ function Update() {
     const handleUpdate = async (e) => {
         e.preventDefault()
 
-        await axios.put(`${BASE_URL}/admin/product/${id}`, {
+        await axios.put(`${BASE_URL}/api/product/${id}`, {
             name: name.current.value, qty: qty.current.value, price: price.current.value, category: category.current.value, brand: brand.current.value, uuid: id
         }, {
             headers: {

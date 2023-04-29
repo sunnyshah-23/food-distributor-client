@@ -35,12 +35,19 @@ const removeProductFromCart = (productId, state) => {
 
     return { ...state, cart: updatedCart };
 };
+const clearCart = (state) => {
+    console.log("clearcart")
+    const updatedCart = []
+    return { ...state, cart: updatedCart };
+};
 const AuthReducer = (state, action) => {
     switch (action.type) {
         case "CART_ADD":
             return addProductToCart(action.payload, state);
         case "CART_REMOVE":
             return removeProductFromCart(action.payload, state);
+        case "CLEAR_CART":
+            return clearCart(state);
         default:
             return state;
     }

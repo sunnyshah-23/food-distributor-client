@@ -12,12 +12,14 @@ function Topbar() {
     return (
         <div className="navbar">
             <div className="left">
-                <h4 onClick={() => user?.isAdmin ? navigate("/admin") : navigate("/")}>Food Distributor System</h4>
+                <h4 onClick={() => user?.admin ? navigate("/admin") : navigate("/")}>Food Distributor System</h4>
             </div>
             <div className="right">
                 {user && <h4>Hi {user.name}</h4>}
-                {user && !user?.isAdmin && <button className='btn btn-primary' onClick={() => navigate("/cart")}>Cart: <h7>{cart?.length}</h7></button>}
-                {user?.isAdmin && < AddIcon style={{ color: "white" }} onClick={() => { navigate("/add/product") }} />}
+                {user && !user?.admin && <button className='btn btn-primary' onClick={() => navigate("/cart")}>Cart: <h7>{cart?.length}</h7></button>}
+                {user && user.admin && <button className="btn btn-primary" onClick={() => navigate("/admin/orders")}>View Orders</button>}
+                {user && !user.admin && <button className="btn btn-primary" onClick={() => navigate("/order")}>View Orders</button>}
+                {user?.admin && < AddIcon style={{ color: "white" }} onClick={() => { navigate("/add/product") }} />}
                 {user && <button className='btn btn-primary' onClick={(e) => logout(dispatch, navigate)}>Logout</button>}
 
             </div>

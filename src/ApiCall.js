@@ -5,10 +5,11 @@ export const loginCall = async (userCredential, dispatch, navigate) => {
     dispatch({ type: "LOGIN_START" });
     try {
         const res = await axios.post(`${BASE_URL}/api/login`, userCredential);
-        console.log(res)
+        console.log("login", res?.data.admin)
         dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
         // console.log("dispacthed")
-        if (res?.data.isAdmin) {
+        if (res?.data.admin == true) {
+
             navigate("/admin")
         }
         else {
@@ -23,7 +24,7 @@ export const loginCall = async (userCredential, dispatch, navigate) => {
 export const registerCall = async (userCredential, dispatch, navigate) => {
     dispatch({ type: "REGISTER_START" })
     try {
-        await axios.post(`${BASE_URL}/api/register`, userCredential)
+        await axios.post(`${BASE_URL}/signup`, userCredential)
         dispatch({ type: "REGISTER_SUCCESS" })
         navigate("/login")
     } catch (err) {

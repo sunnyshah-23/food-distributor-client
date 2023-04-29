@@ -1,0 +1,18 @@
+.inner-card {
+    display: flex !important;
+    padding: 10px;
+}
+
+.card-header {
+    background-color: #39919B;
+}
+
+.parent {
+    padding: 10px;
+}
+
+.parent {
+    margin-top: 10px;
+    margin-bottom: 20px;
+
+}

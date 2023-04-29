@@ -11,8 +11,15 @@ import AdminHome from "./pages/admin/Home"
 import Update from './pages/admin/Update';
 import Addproduct from './pages/admin/Addproduct';
 import Cart from './pages/cart/Cart';
+import { CartContext } from './context/CartContext';
+import Payment from './pages/payment/Payment';
+import Order from './pages/order/Order';
+import AdminOrders from './pages/admin/AdminOrders';
+
 function App() {
   const { user } = useContext(AuthContext)
+  const { cart } = useContext(CartContext)
+
   return (
     <>
 
@@ -21,10 +28,15 @@ function App() {
           <Route exact path="/" element={user ? <Home /> : <Login />} />
           <Route exact path="/register" element={user ? <Home /> : <Register />} />
           <Route exact path="/login" element={user ? <Home /> : <Login />} />
-          <Route exact path="/admin/" element={user?.isAdmin == true ? <AdminHome /> : <Home />} />
-          <Route exact path="/product/:id" element={user?.isAdmin == true ? <Update /> : <Home />} />
-          <Route exact path="/add/product" element={user?.isAdmin == true ? <Addproduct /> : <Home />} />
-          <Route exact path="/cart" element={user?.isAdmin == false ? <Cart /> : <AdminHome />} />
+          <Route exact path="/admin/" element={user?.admin == true ? <AdminHome /> : <Home />} />
+          <Route exact path="/product/:id" element={user?.admin == true ? <Update /> : <Home />} />
+          <Route exact path="/add/product" element={user?.admin == true ? <Addproduct /> : <Home />} />
+          <Route exact path="/cart" element={user?.admin == false ? <Cart /> : <AdminHome />} />
+          <Route exact path="/payment" element={cart.length != 0 ? <Payment /> : <Home />} />
+          <Route exact path="/order" element={user ? <Order /> : <Login />} />
+          <Route exact path="/admin/orders" element={user?.admin == true ? <AdminOrders /> : <Home />} />
+
+
 
 
 
